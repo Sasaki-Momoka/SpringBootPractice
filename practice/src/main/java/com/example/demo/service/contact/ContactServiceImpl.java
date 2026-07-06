@@ -14,9 +14,6 @@ import com.example.demo.repository.contact.ContactRepository;
 @Service
 public class ContactServiceImpl implements ContactService {
 	
-	public void sss() {
-		System.out.println("テスト");
-	}
 
 	@Autowired
 	private ContactRepository contactRepository;
