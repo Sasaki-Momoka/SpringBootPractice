@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>お問い合わせ一覧</title>
+	<script type="/admin/contacts"></script>
+</head>
+
+<body>
+
+	<form th:action="@{/admin/contacts}" th:object="${adminContactList}" method="post">
+		<table border="1">
+
+			<tr>
+				<td>お問い合わせID</td>
+				<td>姓</td>
+				<td>名</td>
+				<td>お問い合わせ種別</td>
+				<td>作成日時</td>
+				<td>更新日時</td>
+			</tr>
+
+			<tr th:each="list : ${list}">
+				<td th:text="${list.id}"></td>
+				<td th:text="${list.lastName}"></td>
+				<td th:text="${list.firstName}"></td>
+				<td th:text="${list.contactType}"></td>
+				<td th:text="${list.created}"></td>
+				<td th:text="${list.updated}"></td>
+			</tr>
+
+
+
+
+		</table>
+
+	</form>
+</body>
+
+</html>
