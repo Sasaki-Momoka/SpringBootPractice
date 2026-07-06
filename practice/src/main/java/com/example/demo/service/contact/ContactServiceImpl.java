@@ -13,14 +13,18 @@ import com.example.demo.repository.contact.ContactRepository;
 
 @Service
 public class ContactServiceImpl implements ContactService {
-	
 
+	
 	@Autowired
 	private ContactRepository contactRepository;
 	
 	@Override
 	public List<Contact> getContactlist() {
+		//System.out.println("test1");
+		//List<Contact> list = contactRepository.findAll();
+		//System.out.println("test2"+ list.size());
 		return contactRepository.findAll();
+		//return list;
 	}
 	
 	

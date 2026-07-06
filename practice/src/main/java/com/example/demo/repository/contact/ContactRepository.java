@@ -9,4 +9,6 @@ import com.example.demo.entity.contact.Contact;
 
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
-}
+	}
+
+
