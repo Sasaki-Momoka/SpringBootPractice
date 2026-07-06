@@ -1,5 +1,9 @@
-package com.example.demo.entity;
+package com.example.demo.entity.contact;
 
+
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +24,8 @@ public class Contact {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
+	
+
 	
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
@@ -47,5 +53,14 @@ public class Contact {
 	
 	@Column(name = "body", nullable = false)
 	private String body;
+	
+	@CreationTimestamp
+	@Column(name  ="created_at")
+	private LocalDateTime createdAt;
+	
+	@CreationTimestamp
+	@Column(name ="updated_at")
+	private LocalDateTime updatedAt;
+	
 	
 }
