@@ -20,9 +20,9 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Override
 	public List<Contact> getContactlist() {
-		//System.out.println("test1");
-		//List<Contact> list = contactRepository.findAll();
-		//System.out.println("test2"+ list.size());
+		System.out.println("test1");
+		List<Contact> list = contactRepository.findAll();
+		System.out.println("数："+ list.toString());
 		return contactRepository.findAll();
 		//return list;
 	}
