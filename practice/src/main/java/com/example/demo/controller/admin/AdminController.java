@@ -1,6 +1,5 @@
 package com.example.demo.controller.admin;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import com.example.demo.service.contact.ContactService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	private ContactService contactService;
 
@@ -21,12 +20,11 @@ public class AdminController {
 	public String showList(Model model) {
 
 		List<Contact> list = contactService.getContactlist();
-		model.addAttribute("list",list);
-		System.out.println("数2："+ list.toString());
-			return "contactList";
+
+		model.addAttribute("list", list);
+
+		return "contactList";
 
 	}
-
-	
 
 }

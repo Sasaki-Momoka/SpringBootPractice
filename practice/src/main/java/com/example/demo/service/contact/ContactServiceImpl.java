@@ -1,33 +1,24 @@
 package com.example.demo.service.contact;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.contact.ContactForm;
 import com.example.demo.repository.contact.ContactRepository;
 
-
-
 @Service
 public class ContactServiceImpl implements ContactService {
 
-	
 	@Autowired
 	private ContactRepository contactRepository;
-	
+
 	@Override
 	public List<Contact> getContactlist() {
-		System.out.println("test1");
 		List<Contact> list = contactRepository.findAll();
-		System.out.println("数："+ list.toString());
-		return contactRepository.findAll();
-		//return list;
+		return list;
 	}
-	
-	
+
 	@Override
 	public void saveContact(ContactForm contactForm) {
 		Contact contact = new Contact();
@@ -41,12 +32,10 @@ public class ContactServiceImpl implements ContactService {
 		contact.setContactType(contactForm.getContactType());
 		contact.setBody(contactForm.getBody());
 
-		contact.setCreated(contactForm.getCreated());
-		contact.setUpdated(contactForm.getUpdated());
+		contact.setCreatedAt(contactForm.getCreatedAt());
+		contact.setUpdatedAt(contactForm.getUpdatedAt());
 
 		contactRepository.save(contact);
 	}
-	
 
-	
 }

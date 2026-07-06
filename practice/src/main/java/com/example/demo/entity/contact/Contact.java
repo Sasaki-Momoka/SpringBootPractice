@@ -3,6 +3,8 @@ package com.example.demo.entity.contact;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,12 +54,13 @@ public class Contact {
 	@Column(name = "body", nullable = false)
 	private String body;
 	
-	
+	@CreationTimestamp
 	@Column(name  ="created_at")
-	private LocalDateTime created;
+	private LocalDateTime createdAt;
 	
+	@CreationTimestamp
 	@Column(name ="updated_at")
-	private LocalDateTime updated;
+	private LocalDateTime updatedAt;
 	
 	
 }

@@ -26,8 +26,8 @@
 				<td th:text="${list.lastName}"></td>
 				<td th:text="${list.firstName}"></td>
 				<td th:text="${list.contactType}"></td>
-				<td th:text="${list.created}"></td>
-				<td th:text="${list.updated}"></td>
+				<td th:text="${#temporals.format(list.createdAt, 'yyyy/MM/dd HH:mm')}"></td>
+				<td th:text="${#temporals.format(list.updatedAt, 'yyyy/MM/dd HH:mm')}"></td>
 			</tr>
 
 
