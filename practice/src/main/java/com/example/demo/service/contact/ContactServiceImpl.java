@@ -26,13 +26,12 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Transactional
 	public Optional<Contact> getDetailById(Long id) {
-		System.out.println("Serviceにいるよ");
+		//System.out.println("Serviceにいるよ");
 		Optional<Contact> detail = contactRepository.findById(id);
 		return detail;
 		//return contactRepository.findById(id);
 	}
 
-	
 
 	@Override
 	public void saveContact(ContactForm contactForm) {

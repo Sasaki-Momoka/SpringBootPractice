@@ -32,9 +32,11 @@ public class AdminController {
 	public String detailContact(@PathVariable("id") Long id, Model model) {
 	//Contact detail = contactService.getDetailById(id);
 		//System.out.println("Admincontrollにいるよ");
-		model.addAttribute("detail", contactService.getDetailById(id));
-		System.out.println(contactService.getDetailById(id).getClass());
 	
+	
+			model.addAttribute("detail", contactService.getDetailById(id));
+				System.out.println(contactService.getDetailById(id).getClass());
+				System.out.println(contactService.getDetailById(id).get());
 		return "contactDetail";
 	}
 	
