@@ -8,17 +8,17 @@
 </head>
 
 <body>
-	<form th:action="@{/admin/contacts/{id}" th:object="${adminContactDetail}" method="post">
+	<form th:action="@{/admin/contacts/{id}}" th:object="${adminContactDetail}" method="post">
 		<table border="1">
 
-		<!--	<tr th:each="detail : ${detail}">
+			<tr th:each="detail : ${detail}">
 				<th>お問い合わせID</th>
-				<td th:text="${detail.id}"></td>
-			</tr>-->
+<!--				<td th:text="${detail.}"></td>-->
+			</tr>
 			
-			<tr>
+			<tr th:each="detail : ${detail}">
 				<th>姓</th>
-				<td>test</td>
+				<td th:text="${detail.lastName}"></td>
 			</tr>
 			
 			<tr>
