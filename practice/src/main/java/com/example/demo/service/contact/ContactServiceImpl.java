@@ -1,8 +1,10 @@
 package com.example.demo.service.contact;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.contact.ContactForm;
 import com.example.demo.repository.contact.ContactRepository;
