@@ -8,12 +8,12 @@
 
 <body>
 
-	<form th:action="@{/admin/contacts/:id}" th:object="${adminContactDetail}" method="post">
+	<form th:action="@{/admin/contacts/{id}" th:object="${adminContactDetail}" method="post">
 		<table border="1">
 
-			<tr>
+			<tr th:each="detail : ${detail}">
 				<th>お問い合わせID</th>
-				<td>test</td>
+				<td th:text="${detail.id}"></td>
 			</tr>
 			
 			<tr>
