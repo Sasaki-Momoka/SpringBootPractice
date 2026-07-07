@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
 	<title>お問い合わせ詳細画面</title>
+	<script type="/admin/contacts/{id}(id= ${detail.id})"></script>
 </head>
 
 <body>
-
 	<form th:action="@{/admin/contacts/{id}" th:object="${adminContactDetail}" method="post">
 		<table border="1">
 
-			<tr th:each="detail : ${detail}">
+		<!--	<tr th:each="detail : ${detail}">
 				<th>お問い合わせID</th>
 				<td th:text="${detail.id}"></td>
-			</tr>
+			</tr>-->
 			
 			<tr>
 				<th>姓</th>

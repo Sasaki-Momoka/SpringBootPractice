@@ -26,7 +26,7 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Transactional
 	public Optional<Contact> getDetailById(Long id) {
-		System.out.println("テスト");
+		System.out.println("Serviceにいるよ");
 		return contactRepository.findById(id);
 	}
 

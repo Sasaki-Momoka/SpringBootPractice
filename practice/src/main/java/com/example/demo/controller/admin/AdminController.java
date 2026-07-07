@@ -30,8 +30,9 @@ public class AdminController {
 	
 	@GetMapping("/admin/contacts/{id}")
 	public String detailContact(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("detail", ContactService.getById(id));
-		return "detail";
+		System.out.println("Admincontrollにいるよ");
+		model.addAttribute("detail", contactService.getDetailById(id));
+		return "contactDetail";
 	}
 	
 	
