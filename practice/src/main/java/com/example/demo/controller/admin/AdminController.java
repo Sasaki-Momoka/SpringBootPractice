@@ -49,10 +49,29 @@ public class AdminController {
 	}
 	
 	@GetMapping("/admin/contacts/{id}/edit")
-	public String getEdit(@PathVariable("id") int id, Model model) {
-		EditForm form = contactService.getEditById(id);
-		model.addAttribute("edit",edit);
-		return "contactEdit";
-	}
+	public String ContactEdit(@PathVariable Long id, Model model) {
+		Contact contact = contactService.getEditById(id);
+	    
+	    model.addAttribute("edit", edit);
+	    return "contactEdit";
 
+	}
+	
+	
+	
+	
+	
+	/*	@GetMapping("/admin/contacts/{id}/edit")
+		public String Edit(@PathVariable("id") Long id, Model model) {
+			EditForm form = contactService.getEditById(id);
+			model.addAttribute("edit",edit);
+			return "contactEdit";
+		}
+	
+		@PostMapping("/admin/contacts/{id}/edit")
+		public String upDateEdit(@PathVariable Long id, @ModelAttribute Edit edit) {
+			contactService.save(edit);
+			return "/admin/contacts";
+		}*/
+	
 }
