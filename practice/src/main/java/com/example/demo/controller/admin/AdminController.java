@@ -8,11 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.service.contact.ContactService;
-
-import jakarta.transaction.Transactional;
 
 @Controller
 public class AdminController {
@@ -31,24 +30,15 @@ public class AdminController {
 
 	}
 	
-	@DeleteMapping("/admin/contacts/delate{id}")
-	@Transactional
-	public String delete(@PathVariable("id") Long id ,Model model) {
+	@DeleteMapping
+	("/admin/contacts/delate/{id}")
+	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+		System.out.println("テストcontroller");
 		contactService.deleteById(id);
-	return  "/admin/contacts";
+		System.out.println("テストcontroller");
+	return  "redirect:/admin/contacts/";
 	}
 	
-	/*	@GetMapping("/admin/contacts/{id}")
-		public String detailContact(@PathVariable("id") Long id, Model model) {
-		//Contact detail = contactService.getDetailById(id);
-			//System.out.println("Admincontrollにいるよ");
-		
-		
-				model.addAttribute("detail", contactService.getDetailById(id));
-					System.out.println(contactService.getDetailById(id).getClass());
-					System.out.println(contactService.getDetailById(id).get());
-			return "contactDetail";
-		}*/
 	@GetMapping("/admin/contacts/{id}")
 	public String detailContact(@PathVariable("id") Long id,Model model) {
 

@@ -33,8 +33,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 	
 	@Transactional
-	public Optional<Contact> deleteById(Long id) {
-		ContactRepository.deleteById(id);
+	public void deleteById(Long id) {
+		contactRepository.deleteById(id);
+		System.out.println("テスト１");
 	}
 
 
