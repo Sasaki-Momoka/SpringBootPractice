@@ -17,6 +17,10 @@ public interface ContactService {
 	  Optional<Contact> getDetailById(Long id);
 
 
+
+	  public Optional<Contact> deleteById(Long id);
+
+
 	}
 
 

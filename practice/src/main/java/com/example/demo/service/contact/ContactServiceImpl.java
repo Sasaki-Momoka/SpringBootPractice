@@ -17,7 +17,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Autowired
 	private ContactRepository contactRepository;
-
+	
 	@Override
 	public List<Contact> getContactlist() {
 		List<Contact> list = contactRepository.findAll();
@@ -30,6 +30,11 @@ public class ContactServiceImpl implements ContactService {
 		Optional<Contact> detail = contactRepository.findById(id);
 		return detail;
 		//return contactRepository.findById(id);
+	}
+	
+	@Transactional
+	public Optional<Contact> deleteById(Long id) {
+		ContactRepository.deleteById(id);
 	}
 
 
@@ -51,6 +56,7 @@ public class ContactServiceImpl implements ContactService {
 
 		contactRepository.save(contact);
 	}
+
 	
 	
 
