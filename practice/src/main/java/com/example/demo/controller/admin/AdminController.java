@@ -48,5 +48,11 @@ public class AdminController {
 
 	}
 	
+	@GetMapping("/admin/contacts/{id}/edit")
+	public String getEdit(@PathVariable("id") int id, Model model) {
+		EditForm form = contactService.getEditById(id);
+		model.addAttribute("edit",edit);
+		return "contactEdit";
+	}
 
 }

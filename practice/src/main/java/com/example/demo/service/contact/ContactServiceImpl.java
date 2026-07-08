@@ -34,6 +34,12 @@ public class ContactServiceImpl implements ContactService {
 	public void deleteById(Long id) {
 		contactRepository.deleteById(id);	
 	}
+	
+	@Transactional
+	public Optional<Contact> getDEditById(Long id) {
+		Optional<Contact> edit = contactRepository.findById(id);
+		return edit;
+	}
 
 
 	@Override
@@ -55,6 +61,7 @@ public class ContactServiceImpl implements ContactService {
 		contactRepository.save(contact);
 	}
 
+	
 	
 	
 

@@ -3,6 +3,7 @@ package com.example.demo.service.contact;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.controller.admin.EditForm;
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.contact.ContactForm;
 
@@ -18,6 +19,8 @@ public interface ContactService {
 
 
 	  public void deleteById(Long id);
+	  
+	 
 	  
 
 
