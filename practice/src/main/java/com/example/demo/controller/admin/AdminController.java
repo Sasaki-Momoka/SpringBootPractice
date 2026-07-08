@@ -30,13 +30,12 @@ public class AdminController {
 
 	}
 	
-	@DeleteMapping
-	("/admin/contacts/delate/{id}")
+	@DeleteMapping("/admin/contacts/delate/{id}")
 	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		System.out.println("テストcontroller");
 		contactService.deleteById(id);
 		System.out.println("テストcontroller");
-	return  "redirect:/admin/contacts/";
+	return  "redirect:/admin/contacts";
 	}
 	
 	@GetMapping("/admin/contacts/{id}")
