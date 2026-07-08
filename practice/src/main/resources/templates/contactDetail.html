@@ -13,64 +13,65 @@
 
 			<tr th:each="detail : ${detail}">
 				<th>お問い合わせID</th>
-				<td th:text="${detail}"></td>
-			</tr>
-			
-			<tr th:each="detail : ${detail}">
-				<th>姓</th>
-<!--				<td th:text="${detail.lastName}"></td>-->
-			</tr>
-			
-			<tr>
-				<th>名</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>メールアドレス</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>電話番号</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>郵便番号</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>住所</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>建物名</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>お問い合わせ種別</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>内容</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>作成日時</th>
-				<td>test</td>
-			</tr>
-			
-			<tr>
-				<th>更新日時</th>
-				<td>test</td>
+				<td th:text="${detail.id}"></td>
 			</tr>
 
+			<tr th:each="detail : ${detail}">
+				<th>姓</th>
+				<td th:text="${detail.lastName}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>名</th>
+				<td th:text="${detail.firstName}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>メールアドレス</th>
+				<td th:text="${detail.email}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>電話番号</th>
+				<td th:text="${detail.phone}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>郵便番号</th>
+				<td th:text="${detail.zipCode}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>住所</th>
+				<td th:text="${detail.address}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>建物名</th>
+				<td th:text="${detail.buildingName}"></td>
+			</tr>
+
+
+			<tr th:each="detail : ${detail}">
+				<th>お問い合わせ種別</th>
+				<td th:text="${detail.contactType}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>内容</th>
+				<td th:text="${detail.body}"></td>
+			</tr>
+
+
+			<tr th:each="detail : ${detail}">
+				<th>作成日時</th>
+				<td th:text="${#temporals.format(detail.createdAt, 'yyyy/MM/dd HH:mm')}"></td>
+			</tr>
+
+			<tr th:each="detail : ${detail}">
+				<th>更新日時</th>
+				<td th:text="${#temporals.format(detail.updatedAt, 'yyyy/MM/dd HH:mm')}"></td>
+			</tr>
 
 
 		</table>

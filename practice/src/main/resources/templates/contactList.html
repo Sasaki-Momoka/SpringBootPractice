@@ -22,7 +22,7 @@
 			</tr>
 
 			<tr th:each="list : ${list}">
-				<td th:text="${list.id}"></td>
+				<td><a th:href="@{/admin/contacts/{id}(id=${list.id})}"th:text="${list.id}"></a></td>
 				<td th:text="${list.lastName}"></td>
 				<td th:text="${list.firstName}"></td>
 				<td th:text="${list.contactType}"></td>
