@@ -12,7 +12,6 @@ public interface ContactService {
 
 	void saveContact(ContactForm contactForm);
 
-	// public Contact getDetailById(Long id); 
 	 
 	  Optional<Contact> getDetailById(Long id);
 
