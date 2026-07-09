@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>お問い合わせ編集画面</title>
-<script type="/admin/contacts/{id}/edit(id= ${edit.id})"></script>
+<!--<script type="/admin/contacts/{id}/edit(id= ${edit.id})"></script>-->
 </head>
 <body>
 <h2>お問い合わせ編集画面</h2>
-<form th:action = "/admin/contacts/{id}/edit" th:object="${adminContactDetail}" method="post">
+<form th:action = "@{/admin/contacts/{id}/edit}" th:object="${adminContactDetail}" method="post">
 	<table border="1">
 		
-		
+		<!--
 		<tr>
 			<td><label for="lastName">姓</label></td>
 			<td><input type="lastName" th:field="*{lastName}"/></td>
@@ -67,7 +67,7 @@
 			<td><label for="contactType">内容</label></td>
 			<td><input type="contactType" th:field="*{contactType}"/></td>
 		</tr>
-		
+		-->
 </form>
 
 

@@ -49,31 +49,36 @@ public class AdminController {
 
 	}
 
+
 	
 		@GetMapping("/admin/contacts/{id}/edit")
 		public String contactEdit(@PathVariable Long id, Model model) {
-			Contact edit = contactService.getEditById(id);
-		    
-		    model.addAttribute("edit", edit);
+			System.out.println("Controllerテスト");
+			//Contact edit = contactService.getEditById(id);
+		   // model.addAttribute("edit", edit);
+			model.addAttribute("editForm",contactService.getEditById(id));
 		    return "contactEdit";
 		}
 		
-		@PostMapping("/admin/contacts/{id}/edit")
-		public String upDateForm(@ModelAttribute @Validated edit,
-				BindingResult bindingResult) {
-			
-			
-			if(bindingResult.hasErrors()) {
-			return "edit";
-			}
-			
-			contactService.contactEdit(contactEdit);
-			return "/admin/contacts";
-			
-			
 		
-	
-}
+		/*
+		@PostMapping ("/admin/contacts/{id}/edit")
+		public String upDateForm(@ModelAttribute @Validated ) {
+		
+		}*/
+				//public String upDateForm(@ModelAttribute @Validated edit,
+				//		BindingResult bindingResult) {
+					
+					
+				//	if(bindingResult.hasErrors()) {
+				//	return "edit";
+				//	}
+					
+				//	contactService.contactEdit(contactEdit);
+				//	return "/admin/contacts";
+			//	}
+				//	*/
+
 
 
 	
@@ -91,5 +96,5 @@ public class AdminController {
 			contactService.save(edit);
 			return "/admin/contacts";
 		}*/
-	
+}
 

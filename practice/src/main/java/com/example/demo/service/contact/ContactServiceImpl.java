@@ -38,7 +38,7 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Transactional
 	
-public Contact upateForm(Long id) {
+public Contact getEditById(Long id) {
 		Optional<Contact>  edit = contactRepository.findById(id);
 		Contact entity = edit.get();
 		
@@ -54,10 +54,11 @@ public Contact upateForm(Long id) {
 		form.setContactType(entity.getContactType());
 		form.setBody(entity.getBody());
 		
-		
+		System.out.println("Serviceテスト");
 		return contactRepository.save(entity);
 		
 	}
+	
 	/*	@Transactional
 		public Optional<Contact> getDEditById(Long id) {
 			Optional<Contact> edit = contactRepository.findById(id);
@@ -82,7 +83,9 @@ public Contact upateForm(Long id) {
 		contact.setUpdatedAt(contactForm.getUpdatedAt());
 
 		contactRepository.save(contact);
+		System.out.println("test");
 	}
+
 
 	
 	
