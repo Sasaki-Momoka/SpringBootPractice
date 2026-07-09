@@ -35,11 +35,34 @@ public class ContactServiceImpl implements ContactService {
 		contactRepository.deleteById(id);	
 	}
 	
+	
 	@Transactional
-	public Optional<Contact> getDEditById(Long id) {
-		Optional<Contact> edit = contactRepository.findById(id);
-		return edit;
+	
+public Contact upateForm(Long id) {
+		Optional<Contact>  edit = contactRepository.findById(id);
+		Contact entity = edit.get();
+		
+		Contact form = new Contact();
+		
+		form.setLastName(entity.getLastName());
+		form.setFirstName(entity.getFirstName());
+		form.setEmail(entity.getEmail());
+		form.setPhone(entity.getPhone());
+		form.setZipCode(entity.getZipCode());
+		form.setAddress(entity.getAddress());
+		form.setBuildingName(entity.getBuildingName());
+		form.setContactType(entity.getContactType());
+		form.setBody(entity.getBody());
+		
+		
+		return contactRepository.save(entity);
+		
 	}
+	/*	@Transactional
+		public Optional<Contact> getDEditById(Long id) {
+			Optional<Contact> edit = contactRepository.findById(id);
+			return edit;
+		}*/
 
 
 	@Override
