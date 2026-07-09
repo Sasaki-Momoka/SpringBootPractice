@@ -54,7 +54,7 @@ public Contact getEditById(Long id) {
 		form.setContactType(entity.getContactType());
 		form.setBody(entity.getBody());
 		
-		System.out.println("Serviceテスト");
+		System.out.println(entity.getLastName());
 		return contactRepository.save(entity);
 		
 	}
