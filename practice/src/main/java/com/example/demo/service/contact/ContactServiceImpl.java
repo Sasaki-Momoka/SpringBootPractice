@@ -42,7 +42,7 @@ public Contact getEditById(Long id) {
 		Optional<Contact>  edit = contactRepository.findById(id);
 		Contact entity = edit.get();
 		
-		Contact form = new Contact();
+		ContactForm form = new ContactForm();
 		
 		form.setLastName(entity.getLastName());
 		form.setFirstName(entity.getFirstName());
@@ -58,6 +58,7 @@ public Contact getEditById(Long id) {
 		return contactRepository.save(entity);
 		
 	}
+	
 	
 	/*	@Transactional
 		public Optional<Contact> getDEditById(Long id) {

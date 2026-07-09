@@ -54,10 +54,19 @@ public class AdminController {
 		@GetMapping("/admin/contacts/{id}/edit")
 		public String contactEdit(@PathVariable Long id, Model model) {
 			System.out.println("Controllerテスト");
-			//Contact edit = contactService.getEditById(id);
-		   // model.addAttribute("edit", edit);
-			model.addAttribute("editForm",contactService.getEditById(id));
-		    return "contactEdit";
+			Contact form = contactService.getEditById(id);
+			model.addAttribute("form", form);
+			//model.addAttribute("contactForm",contactService.getEditById(id));
+			 return "contactEdit";
+		    
+		    
+			/*
+						List<Contact> edit = contactService.getContactlist();
+			
+						model.addAttribute("edit", edit);
+			
+						return "contactEdit";
+			*/
 		}
 		
 		

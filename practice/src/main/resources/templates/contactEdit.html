@@ -7,15 +7,15 @@
 </head>
 <body>
 <h2>お問い合わせ編集画面</h2>
-<form th:action = "@{/admin/contacts/{id}/edit}" th:object="${adminContactDetail}" method="post">
+<form th:action = "@{/admin/contacts/{id}/edit}" th:object="${adminContactEdit}" method="post">
 	<table border="1">
 		
-		<!--
-		<tr>
-			<td><label for="lastName">姓</label></td>
-			<td><input type="lastName" th:field="*{lastName}"/></td>
-		</tr>
 		
+		<tr>
+			<td><label for="form.lastName">姓</label></td>
+			<td><input type="form.lastName" th:field="${lastName}"/></td>
+		</tr>
+			<!--
 			
 		<tr>
 			<td><label for="firstName">名</label></td>
@@ -68,6 +68,7 @@
 			<td><input type="contactType" th:field="*{contactType}"/></td>
 		</tr>
 		-->
+		</table>
 </form>
 
 
