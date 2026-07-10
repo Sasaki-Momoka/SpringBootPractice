@@ -77,9 +77,17 @@
 		</table>
 		
 <!--		<button onclick = "location.href='http://localhost:8080/admin/contacts/:id/edit'">編集</button>-->
-		<button type = "button" th:onclick="|location.href='http://localhost:8080/admin/contacts/${id}/edit"|>
+<!--		<button type = "button" th:onclick="location.href='http://localhost:8080/admin/contacts/${id}/edit">-->
 			
-		</button>
+  			  <button type="submit">
+								<a th:href="@{/admin/contacts/{id}/edit(id=${detail.id})}">
+
+					編集
+				</a>
+	
+					</button>
+
+<!--		</button>-->
 
 	</form>
 

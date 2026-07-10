@@ -41,7 +41,6 @@ public class ContactServiceImpl implements ContactService {
 public Contact getEditById(Long id) {
 		Optional<Contact>  edit = contactRepository.findById(id);
 		Contact entity = edit.get();
-		
 		ContactForm form = new ContactForm();
 		
 		form.setLastName(entity.getLastName());
@@ -54,7 +53,7 @@ public Contact getEditById(Long id) {
 		form.setContactType(entity.getContactType());
 		form.setBody(entity.getBody());
 		
-		System.out.println(entity.getLastName());
+
 		return contactRepository.save(entity);
 		
 	}
@@ -84,7 +83,6 @@ public Contact getEditById(Long id) {
 		contact.setUpdatedAt(contactForm.getUpdatedAt());
 
 		contactRepository.save(contact);
-		System.out.println("test");
 	}
 
 

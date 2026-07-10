@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -43,70 +46,65 @@ public class AdminController {
 		Contact detail = contactService.getDetailById(id).orElse(null);
 
 		model.addAttribute("detail", detail);
-		
+
 		return "contactDetail";
 
 	}
 
 
+	/*	@PostMapping ("/admin/contacts/{id}/edit")
+	public String upDateForm(@ModelAttribute @Validated　ContactForm　contactForm, 
+			BindingResult bindingResult) {
+	
+			if(bindingResult.hasErrors()) {
+				return "edit";
+				}
+				
+				contactService.contactEdit(contactEdit);
+			return "/admin/contacts";
+			}
+*/
+
+	
 	
 		@GetMapping("/admin/contacts/{id}/edit")
 		public String contactEdit(@PathVariable Long id, Model model) {
-			System.out.println("Controllerテスト");
-			//Contact form = contactService.getEditById(id);
-			//model.addAttribute("form", form);
+
 			model.addAttribute("contactForm",contactService.getEditById(id));
-			System.out.println("Controllerテスト");
+
 			 return "contactEdit";
 		    
-		    
-			 
-			 
-			 
-			/*
-						List<Contact> edit = contactService.getContactlist();
-			
-						model.addAttribute("edit", edit);
-			
-						return "contactEdit";
-			*/
 		}
 		
-		
-		/*
-		@PostMapping ("/admin/contacts/{id}/edit")
-		public String upDateForm(@ModelAttribute @Validated ) {
-		
-		}*/
-				//public String upDateForm(@ModelAttribute @Validated edit,
-				//		BindingResult bindingResult) {
-					
-					
-				//	if(bindingResult.hasErrors()) {
-				//	return "edit";
-				//	}
-					
-				//	contactService.contactEdit(contactEdit);
-				//	return "/admin/contacts";
-			//	}
-				//	*/
-
-
-
-	
-	
-	
-	/*	@GetMapping("/admin/contacts/{id}/edit")
-		public String Edit(@PathVariable("id") Long id, Model model) {
-			EditForm form = contactService.getEditById(id);
-			model.addAttribute("edit",edit);
-			return "contactEdit";
-		}
-	
 		@PostMapping("/admin/contacts/{id}/edit")
-		public String upDateEdit(@PathVariable Long id, @ModelAttribute Edit edit) {
-			contactService.save(edit);
-			return "/admin/contacts";
-		}*/
+		public String upDateEdit(@Validated @ModelAttribute Long id,BindingResult bindingResult,Model model) {
+			System.out.println("Controllerテスト動いてない");
+			contactService.getEditById(id);
+			if(bindingResult.hasErrors()) {
+				return "edit";
+			}
+			
+			//contactService.upDateEdit();
+			return "redirect:/admin/contacts";
+		}
+		
+		
+		/*	@PostMapping ("/admin/contacts/{id}/edit")
+			public String upDateForm(@ModelAttribute @Validated　ContactForm　contactForm, 
+					BindingResult bindingResult) {
+			
+					if(bindingResult.hasErrors()) {
+						return "edit";
+						}
+						
+						contactService.contactEdit(contactEdit);
+					return "/admin/contacts";
+					}
+		*/
+
+
+
+
+	
 }
 
