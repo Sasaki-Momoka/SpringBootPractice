@@ -47,7 +47,15 @@ public class ContactForm implements Serializable {
 
 	private LocalDateTime updatedAt;
 	
-	private Long id;
+	/*private Long id;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public Long setId(Long id) {
+		return this.id = id;
+	}*/
 
 	public boolean hasErrors() {
 		// TODO 自動生成されたメソッド・スタブ

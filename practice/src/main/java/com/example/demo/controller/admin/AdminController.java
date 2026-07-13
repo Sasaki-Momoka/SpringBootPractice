@@ -85,9 +85,9 @@ model.addAttribute("contactForm",contactService.getEditById(id));
 			redirectAttributes.addFlashAttribute("successMessage", "保存しました");
 			System.out.println("更新できてるか");
 				contactService.saveContact(contactForm);
-						if(contactForm.hasErrors()) {
+					if(contactForm.hasErrors()) {
 								return "edit";
-						}
+					}
 
 				//contactService.upDateEdit();
 				return "redirect:/admin/contacts";

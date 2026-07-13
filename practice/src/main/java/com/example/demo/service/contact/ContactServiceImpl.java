@@ -43,6 +43,7 @@ public Contact getEditById(Long id) {
 		Contact entity = edit.get();
 		ContactForm form = new ContactForm();
 		
+		/*		form.setId(entity.getId());*/
 		form.setLastName(entity.getLastName());
 		form.setFirstName(entity.getFirstName());
 		form.setEmail(entity.getEmail());
