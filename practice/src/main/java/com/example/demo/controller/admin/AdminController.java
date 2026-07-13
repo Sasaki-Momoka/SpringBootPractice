@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.contact.Contact;
+import com.example.demo.form.contact.ContactForm;
 import com.example.demo.service.contact.ContactService;
 
 @Controller
@@ -70,24 +71,24 @@ public class AdminController {
 	public String contactEdit(@PathVariable Long id, Model model) {
 
 		
-		Contact contactForm = contactService.getEditById(id);
+	//	Contact contact = contactService.getEditById(id);
 		
-		model.addAttribute("contactForm", contactForm);
-
+		//model.addAttribute("contactForm", contactForm);
+model.addAttribute("contactForm",contactService.getEditById(id));
 		return "contactEdit";
 
 	}
 
 		@PostMapping("/admin/contacts/{id}/edit")
-			public String upDateEdit(@Validated @ModelAttribute ("contactForm") Contact contactForm ,@PathVariable Long id,
-					BindingResult errorResult,RedirectAttributes redirectAttributes) {
+			public String upDateEdit(@Validated @ModelAttribute ("contactForm") ContactForm contactForm ,@PathVariable Long id,
+					BindingResult bindingResult,RedirectAttributes redirectAttributes) {
 			redirectAttributes.addFlashAttribute("successMessage", "保存しました");
-			
-				
-				/*			if(contactForm.hasErrors()) {
+			System.out.println("更新できてるか");
+				contactService.saveContact(contactForm);
+						if(contactForm.hasErrors()) {
 								return "edit";
-							}*/
-				
+						}
+
 				//contactService.upDateEdit();
 				return "redirect:/admin/contacts";
 			

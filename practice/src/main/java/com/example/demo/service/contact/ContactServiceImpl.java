@@ -68,6 +68,7 @@ public Contact getEditById(Long id) {
 
 	@Override
 	public void saveContact(ContactForm contactForm) {
+		System.out.println("更新できてるか111111");
 		Contact contact = new Contact();
 		contact.setLastName(contactForm.getLastName());
 		contact.setFirstName(contactForm.getFirstName());
@@ -83,6 +84,8 @@ public Contact getEditById(Long id) {
 		contact.setUpdatedAt(contactForm.getUpdatedAt());
 
 		contactRepository.save(contact);
+
+		
 	}
 
 
