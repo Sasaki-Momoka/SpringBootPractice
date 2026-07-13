@@ -44,7 +44,7 @@ public class AdminController {
 		return "contactDetail";
 
 	}
-	
+
 	@PostMapping("/admin/contacts/{id}")
 	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		contactService.deleteById(id);
@@ -52,67 +52,29 @@ public class AdminController {
 		return "redirect:/admin/contacts";
 	}
 
-
-
-	/*	@PostMapping ("/admin/contacts/{id}/edit")
-	public String upDateForm(@ModelAttribute @Validated　ContactForm　contactForm, 
-			BindingResult bindingResult) {
-	
-			if(bindingResult.hasErrors()) {
-				return "edit";
-				}
-				
-				contactService.contactEdit(contactEdit);
-			return "/admin/contacts";
-			}
-	*/
-
 	@GetMapping("/admin/contacts/{id}/edit")
 	public String contactEdit(@PathVariable Long id, Model model) {
-
-		
-	//	Contact contact = contactService.getEditById(id);
-		
-		//model.addAttribute("contactForm", contactForm);
-model.addAttribute("contactForm",contactService.getEditById(id));
+		model.addAttribute("contactForm", contactService.getEditById(id));
 		return "contactEdit";
 
 	}
 
-		@PostMapping("/admin/contacts/{id}/edit")
-			public String upDateEdit(@Validated @ModelAttribute ("contactForm") ContactForm contactForm ,@PathVariable Long id,
-					BindingResult bindingResult,RedirectAttributes redirectAttributes) {
-			//System.out.println("更新できてるか1");
-			
-			if(bindingResult.hasErrors()) {
-			
-						return "edit";}
-			contactForm.setId(id);
-			//System.out.println(id);
-			//System.out.println(contactForm.getLastName());
-			contactService.saveContact(contactForm);
-			//System.out.println("更新できてるか2");
-			redirectAttributes.addFlashAttribute("successMessage", "保存しました");
-			//System.out.println("更新できてるか3");
-			
-			
+	@PostMapping("/admin/contacts/{id}/edit")
+	public String upDateEdit(@Validated @ModelAttribute("contactForm") ContactForm contactForm, @PathVariable Long id,
+			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-				//contactService.upDateEdit();
-				return "redirect:/admin/contacts";
-			
+		if (bindingResult.hasErrors()) {
+
+			return "edit";
 		}
-	/*	@PostMapping ("/admin/contacts/{id}/edit")
-		public String upDateForm(@ModelAttribute @Validated　ContactForm　contactForm, 
-				BindingResult bindingResult) {
-		
-				if(bindingResult.hasErrors()) {
-					return "edit";
-					}
-					
-					contactService.contactEdit(contactEdit);
-				return "/admin/contacts";
-				}
-	*/
+		contactForm.setId(id);
 
+		contactService.saveContact(contactForm);
+
+		redirectAttributes.addFlashAttribute("successMessage", "保存しました");
+
+		return "redirect:/admin/contacts";
+
+	}
 
 }

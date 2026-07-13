@@ -22,37 +22,38 @@
 			</tr>
 
 			<tr th:each="list : ${list}">
-				<td><a th:href="@{/admin/contacts/{id}(id=${list.id})}"th:text="${list.id}"></a></td>
+				<td><a th:href="@{/admin/contacts/{id}(id=${list.id})}" th:text="${list.id}"></a></td>
 				<td th:text="${list.lastName}"></td>
 				<td th:text="${list.firstName}"></td>
 				<td th:text="${list.contactType}"></td>
 				<td th:text="${#temporals.format(list.createdAt, 'yyyy/MM/dd HH:mm')}"></td>
 				<td th:text="${#temporals.format(list.updatedAt, 'yyyy/MM/dd HH:mm')}"></td>
-				
+
 				<td>
-				<form th:action="@{/admin/contacts/{id}(id=${list.id})}" th:method="delete" onsubmit="return confirm('本当に削除しますか？');">
-				<button type ="submit" class="btn btn-danger">削除</button>
-				
+					<form th:action="@{/admin/contacts/{id}(id=${list.id})}" th:method="delete"
+						onsubmit="return confirm('本当に削除しますか？');">
+						<button type="submit" class="btn btn-danger">削除</button>
+
 					</form>
-					</td>
+				</td>
 			</tr>
-				
+
 
 
 
 
 		</table>
-	<div th:if="${successMessage}">
-					<p th:text="${successMessage}"></p>
-				
-					<div th:if="${errorMessage}">
-					<p th:text="${errorMessage}"></p>
-					</div>
+		<div th:if="${successMessage}">
+			<p th:text="${successMessage}"></p>
+
+			<div th:if="${errorMessage}">
+				<p th:text="${errorMessage}"></p>
+			</div>
 	</form>
-	
+
 	<form th:action="@{/admin/contacts/logout}" method="post">
-					<button type="submit">ログアウト</button>
-				</form>
+		<button type="submit">ログアウト</button>
+	</form>
 </body>
 
 </html>

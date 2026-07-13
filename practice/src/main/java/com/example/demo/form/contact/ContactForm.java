@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 public class ContactForm implements Serializable {
-	
+
 	private Long id;
 
 	@NotBlank
@@ -48,20 +48,13 @@ public class ContactForm implements Serializable {
 	private LocalDateTime createdAt;
 
 	private LocalDateTime updatedAt;
-	
-	
-	/*	public Long getId() {
-			return id;
-		}*/
-	
+
 	public Long setId(Long id) {
 		return this.id = id;
 	}
 
 	public boolean hasErrors() {
-		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
-
 
 }

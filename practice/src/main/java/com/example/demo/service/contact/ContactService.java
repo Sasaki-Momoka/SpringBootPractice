@@ -12,28 +12,10 @@ public interface ContactService {
 
 	void saveContact(ContactForm contactForm);
 
-	 
-	  Optional<Contact> getDetailById(Long id);
+	Optional<Contact> getDetailById(Long id);
 
-
-
-	  public void deleteById(Long id);
+	public void deleteById(Long id);
 
 	Contact getEditById(Long id);
-	
 
-
-
-
-
-
-
-	  
-	 
-	  
-
-
-	}
-
-
-
+}
