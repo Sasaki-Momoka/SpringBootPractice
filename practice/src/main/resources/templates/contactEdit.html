@@ -7,7 +7,8 @@
 </head>
 <body>
 <h2>お問い合わせ編集画面</h2>
-<form th:action = "@{/admin/contacts/{id}/edit}" th:object="${contactForm}" method="post">
+<form th:action = "@{/admin/contacts/{id}/edit(id=${contactForm.id})}" th:object="${contactForm}" method="post">
+		<input type ="hidden"th:field="{id}">
 	<table border="1">
 		
 		
@@ -71,7 +72,7 @@
 		</table>
 
 		
-				<form th:action="@{/admin/contacts/{id}}" th:method="post" onsubmit="return confirm('本当に保存しますか？');">
+				<form th:action="@{/admin/contacts/{id}/edit}" th:method="post" onsubmit="return confirm('本当に保存しますか？');">
 				<button type ="submit">保存</button>
 					</form>
 					

@@ -4,7 +4,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>お問い合わせ詳細画面</title>
-	<script type="/admin/contacts/{id}(id= ${detail.id})"></script>
 </head>
 
 <body>
@@ -80,8 +79,7 @@
 <!--		<button type = "button" th:onclick="location.href='http://localhost:8080/admin/contacts/${id}/edit">-->
 			
   			  <button type="submit">
-								<a th:href="@{/admin/contacts/{id}/edit(id=${detail.id})}">
-
+              <a th:href="@{/admin/contacts/{id}/edit(id=${detail.id})}">
 					編集
 				</a>
 	
