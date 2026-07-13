@@ -44,7 +44,7 @@ public Contact getEditById(Long id) {
 		Contact entity = edit.get();
 		ContactForm form = new ContactForm();
 		
-		/*		form.setId(entity.getId());*/
+			form.setId(entity.getId());
 		form.setLastName(entity.getLastName());
 		form.setFirstName(entity.getFirstName());
 		form.setEmail(entity.getEmail());
@@ -70,8 +70,12 @@ public Contact getEditById(Long id) {
 
 	@Override
 	public void saveContact(ContactForm contactForm) {
-		System.out.println("更新できてるか111111");
+		//System.out.println("更新できてるか111111");
 		Contact contact = contactRepository.findById(contactForm.getId()).orElseThrow();
+		
+		
+		System.out.println("serviceです");
+		System.out.println(contactForm.getId());
 		
 		contact.setLastName(contactForm.getLastName());
 		contact.setFirstName(contactForm.getFirstName());
@@ -86,8 +90,9 @@ public Contact getEditById(Long id) {
 		contact.setCreatedAt(contactForm.getCreatedAt());
 		contact.setUpdatedAt(LocalDateTime.now());
 
+		System.out.println(contact.getId());
 		contactRepository.save(contact);
-
+		System.out.println("Service動いてる");
 		
 	}
 
