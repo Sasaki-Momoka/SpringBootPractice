@@ -1,5 +1,6 @@
 package com.example.demo.service.contact;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -70,7 +71,8 @@ public Contact getEditById(Long id) {
 	@Override
 	public void saveContact(ContactForm contactForm) {
 		System.out.println("更新できてるか111111");
-		Contact contact = new Contact();
+		Contact contact = contactRepository.findById(contactForm.getId()).orElseThrow();
+		
 		contact.setLastName(contactForm.getLastName());
 		contact.setFirstName(contactForm.getFirstName());
 		contact.setEmail(contactForm.getEmail());
@@ -82,7 +84,7 @@ public Contact getEditById(Long id) {
 		contact.setBody(contactForm.getBody());
 
 		contact.setCreatedAt(contactForm.getCreatedAt());
-		contact.setUpdatedAt(contactForm.getUpdatedAt());
+		contact.setUpdatedAt(LocalDateTime.now());
 
 		contactRepository.save(contact);
 

@@ -82,12 +82,16 @@ model.addAttribute("contactForm",contactService.getEditById(id));
 		@PostMapping("/admin/contacts/{id}/edit")
 			public String upDateEdit(@Validated @ModelAttribute ("contactForm") ContactForm contactForm ,@PathVariable Long id,
 					BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+
+			if(contactForm.hasErrors()) {
+				
+						return "edit";}
+			contactForm.setId(id);
+			contactService.saveContact(contactForm);
 			redirectAttributes.addFlashAttribute("successMessage", "保存しました");
 			System.out.println("更新できてるか");
-				contactService.saveContact(contactForm);
-					if(contactForm.hasErrors()) {
-								return "edit";
-					}
+			
+			
 
 				//contactService.upDateEdit();
 				return "redirect:/admin/contacts";
