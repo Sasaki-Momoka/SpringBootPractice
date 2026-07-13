@@ -21,10 +21,6 @@ public interface ContactService {
 
 	Contact getEditById(Long id);
 
-	Contact getEditById(ContactForm contactForm);
-
-
-
 
 
 

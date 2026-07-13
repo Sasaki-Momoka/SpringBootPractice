@@ -38,10 +38,9 @@ public class ContactServiceImpl implements ContactService {
 	
 	@Transactional
 	
-public ContactForm getEditById(Long id) {
-		Contact entity = contactRepository.findById(id)
-		.orElseThrow(()) -> new IllegalArgumentException("データが未入力です。"));
-	//	Contact entity = edit.get();
+public Contact getEditById(Long id) {
+		Optional<Contact>  edit = contactRepository.findById(id);
+		Contact entity = edit.get();
 		ContactForm form = new ContactForm();
 		
 		form.setLastName(entity.getLastName());
@@ -55,7 +54,7 @@ public ContactForm getEditById(Long id) {
 		form.setBody(entity.getBody());
 		
 		System.out.println("テスト動いてない");
-		return form;
+		return contactRepository.save(entity);
 		
 	}
 	
@@ -79,26 +78,16 @@ public ContactForm getEditById(Long id) {
 		contact.setBuildingName(contactForm.getBuildingName());
 		contact.setContactType(contactForm.getContactType());
 		contact.setBody(contactForm.getBody());
+
 		contact.setCreatedAt(contactForm.getCreatedAt());
 		contact.setUpdatedAt(contactForm.getUpdatedAt());
 
 		contactRepository.save(contact);
 	}
 
-	@Override
-	public Contact getEditById(ContactForm contactForm) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	
-
-
-	}
-
 
 	
 	
+	
 
-
-
+}

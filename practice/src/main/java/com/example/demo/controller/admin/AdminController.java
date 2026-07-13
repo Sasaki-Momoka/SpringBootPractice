@@ -80,15 +80,15 @@ public class AdminController {
 
 		@PostMapping("/admin/contacts/{id}/edit")
 			public String upDateEdit(@Validated @ModelAttribute ("contactForm") Contact contactForm ,@PathVariable Long id,
-					BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+					BindingResult errorResult,RedirectAttributes redirectAttributes) {
 			redirectAttributes.addFlashAttribute("successMessage", "保存しました");
 			
 				
-					if(bindingResult.hasErrors()) {
+				/*			if(contactForm.hasErrors()) {
 								return "edit";
-					}
+							}*/
 				
-					contactService.upDateEdit(contactForm);
+				//contactService.upDateEdit();
 				return "redirect:/admin/contacts";
 			
 		}

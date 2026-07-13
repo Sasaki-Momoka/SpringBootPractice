@@ -61,6 +61,11 @@ public class Contact {
 	@CreationTimestamp
 	@Column(name ="updated_at")
 	private LocalDateTime updatedAt;
+
+	public boolean hasErrors() {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
 	
 	
 }
