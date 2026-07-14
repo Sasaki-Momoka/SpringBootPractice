@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -62,5 +63,65 @@ public class AdminController {
 		redirectAttributes.addFlashAttribute("successMessage", "保存しました");
 		return "redirect:/admin/contacts";
 	}
+	
+	
+/*		@RequestMapping (value = "/admin/signup",method = RequestMethod.POST)
+		public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
+			
+			if(result.hasErrors()) {
+				List<String> errorList = newArrayList<String>();
+				for(ObjectError error : result.getAllErrors()) {
+					errorList.add(error.getDefaultMessage());
+				}
+			model.addAttribute("validationError",errorList);
+			return "/admin/signup";
+		}*/
+		
+	@GetMapping("/admin/signup")
+	public String showSignupForm(@ModelAttribute("signupForm") SignupForm form) {
+		return "signup";
+}
+	@PostMapping("/admin/signup")
+	public String registerUser(@Validated @ModelAttribute("signupForm")SignupForm form, 
+			BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			return "/signup";
+		}
+		return "redirect:/admin/contacts";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
