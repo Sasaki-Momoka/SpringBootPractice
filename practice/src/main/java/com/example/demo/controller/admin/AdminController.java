@@ -2,6 +2,7 @@ package com.example.demo.controller.admin;
 
 import java.util.List;
 
+import org.apache.catalina.realm.JNDIRealm.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.contact.ContactForm;
+import com.example.demo.repository.admin.AdminRepository;
 import com.example.demo.service.contact.ContactService;
 
 @Controller
@@ -76,23 +78,42 @@ public class AdminController {
 			model.addAttribute("validationError",errorList);
 			return "/admin/signup";
 		}*/
-		
+/*		
 	@GetMapping("/admin/signup")
 	public String showSignupForm(@ModelAttribute("signupForm") SignupForm form) {
+		System.out.println("テストです。");
 		return "signup";
 }
 	@PostMapping("/admin/signup")
 	public String registerUser(@Validated @ModelAttribute("signupForm")SignupForm form, 
 			BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
+			System.out.println("テストです。２");
 			return "/signup";
 		}
 		return "redirect:/admin/contacts";
+	}*/
+	
+	
+	
+	
+	@GetMapping("/admin/signup")
+	public String showSignupForm(Model model) {
+		System.out.println("テストです。");
+		model.addAttribute("user", new User());
+		return "signup";
+}
+	@PostMapping("/admin/signup")
+	public String signup(@Validated @ModelAttribute("user")User user, 
+			BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			System.out.println("テストです。２");
+			return "/signup";
+		}
+		
+		AdminRepository.save(user);
+		return "redirect:/admin/contacts";
 	}
-	
-	
-	
-	
 	
 	
 	

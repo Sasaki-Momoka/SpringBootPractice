@@ -6,6 +6,11 @@ import jakarta.validation.constraints.Size;
 
 public class AdminForm {
 	
+	@NotBlank(message = "姓を入力してください")
+	private String last_name;
+	@NotBlank(message = "姓を入力してください")
+	private String first_name;
+	
 	@NotBlank(message = "メールアドレスを入力してください")
 	@Email(message = "正しいメールアドレスを入力してください")
 	private String email;
