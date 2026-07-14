@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>サインアップ</title>
+<input type="hidden" name="id" th:field="*{id}">
 </head>
 <body>
 	<h2>新規ユーザー登録</h2>
-	<form th:action="@{/admin/signup}" th:object="{signupForm}" method="post">
+	<form th:action="@{/admin/signup}" th:object="{adminForm}" method="post">
 	
 	  <div>
             <label>姓:</label>

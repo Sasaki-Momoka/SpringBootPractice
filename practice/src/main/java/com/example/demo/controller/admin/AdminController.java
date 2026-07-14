@@ -2,7 +2,6 @@ package com.example.demo.controller.admin;
 
 import java.util.List;
 
-import org.apache.catalina.realm.JNDIRealm.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.entity.admin.AdminEntity;
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.contact.ContactForm;
-import com.example.demo.repository.admin.AdminRepository;
-import com.example.demo.service.contact.ContactService;
+import com.example.demo.service.contact.ContactService; 
 
 @Controller
 public class AdminController {
@@ -100,18 +99,16 @@ public class AdminController {
 	@GetMapping("/admin/signup")
 	public String showSignupForm(Model model) {
 		System.out.println("テストです。");
-		model.addAttribute("user", new User());
+		model.addAttribute("user", new AdminEntity());
 		return "signup";
 }
 	@PostMapping("/admin/signup")
-	public String signup(@Validated @ModelAttribute("user")User user, 
+	public String signup(@Validated @ModelAttribute("user")AdminEntity user, 
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("テストです。２");
 			return "/signup";
 		}
-		
-		AdminRepository.save(user);
 		return "redirect:/admin/contacts";
 	}
 	
