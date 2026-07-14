@@ -1,10 +1,7 @@
 package com.example.demo.entity.contact;
 
-
 import java.time.LocalDateTime;
-
 import org.hibernate.annotations.CreationTimestamp;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,50 +14,50 @@ import lombok.Data;
 @Data
 @Table(name = "contacts")
 
-
 public class Contact {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
-	
 
-	
 	@Column(name = "last_name", nullable = false)
 	private String lastName;
-	
+
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
-	
+
 	@Column(name = "email", nullable = false)
 	private String email;
-	
+
 	@Column(name = "phone", nullable = false)
 	private String phone;
-	
+
 	@Column(name = "zip_code", nullable = false)
 	private String zipCode;
-	
+
 	@Column(name = "address", nullable = false)
 	private String address;
-	
+
 	@Column(name = "building_name", nullable = false)
 	private String buildingName;
-	
+
 	@Column(name = "contact_type", nullable = false)
 	private String contactType;
-	
+
 	@Column(name = "body", nullable = false)
 	private String body;
-	
+
 	@CreationTimestamp
-	@Column(name  ="created_at")
+	@Column(name = "created_at")
 	private LocalDateTime createdAt;
-	
+
 	@CreationTimestamp
-	@Column(name ="updated_at")
+	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
-	
-	
+
+	public boolean hasErrors() {
+		return false;
+	}
+
 }

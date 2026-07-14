@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>お問い合わせ編集画面</title>
+	<input type="hidden" name="id" th:field="*{id}">
+</head>
+
+<body>
+	<h2>お問い合わせ編集画面</h2>
+	<form th:action="@{/admin/contacts/{id}/edit(id=${contactForm.id})}" th:object="${contactForm}" th:method="put">
+
+		<table border="1">
+			<tr>
+				<td><label for="lastName">姓</label></td>
+				<td><input type="text" th:field="*{lastName}" /></td>
+			</tr>
+			<tr>
+				<td><label for="firstName">名</label></td>
+				<td><input type="text" th:field="*{firstName}" /></td>
+			</tr>
+			<tr>
+				<td><label for="email">メールアドレス</label></td>
+				<td><input type="email" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td><label for="phone">電話番号</label></td>
+				<td><input type="tel" th:field="*{phone}" /></td>
+			</tr>
+			<tr>
+				<td><label for="zipCode">郵便番号</label></td>
+				<td><input type="text" th:field="*{zipCode}" /></td>
+			</tr>
+			<tr>
+				<td><label for="address">住所</label></td>
+				<td><input type="text" th:field="*{address}" /></td>
+			</tr>
+			<tr>
+				<td><label for="buildingName">建物名</label></td>
+				<td><input type="text" th:field="*{buildingName}" /></td>
+			</tr>
+			<tr>
+				<td><label for="contactType">お問い合わせ種別</label></td>
+				<td>
+					<select name="contactType">
+						<option th:value="services">サービスに関するお問い合わせ</option>
+						<option th:value="technicalQuestions">技術的なお問い合わせ</option>
+						<option th:value="others">その他</option>
+					</select>
+					<span th:if="${#fields.hasErrors('contactType')}" th:errors="*{contactType}"
+						style="color:red"></span>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="body">内容</label></td>
+				<td><input type="text" th:field="*{body}" /></td>
+			</tr>
+		</table>
+
+		<form th:action="@{/admin/contacts/{id}/edit}" th:method="post" onsubmit="return confirm('本当に保存しますか？');">
+			<button type="submit">保存</button>
+		</form>
+
+		<form th:action="@{/admin/contacts/logout}" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+	</form>
+</body>
+
+</html>
