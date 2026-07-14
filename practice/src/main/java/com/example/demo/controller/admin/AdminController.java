@@ -36,7 +36,6 @@ public class AdminController {
 		Contact detail = contactService.getDetailById(id).orElse(null);
 		model.addAttribute("detail", detail);
 		return "contactDetail";
-
 	}
 
 	@DeleteMapping("/admin/contacts/{id}")
@@ -50,7 +49,6 @@ public class AdminController {
 	public String contactEdit(@PathVariable Long id, Model model) {
 		model.addAttribute("contactForm", contactService.getEditById(id));
 		return "contactEdit";
-
 	}
 
 	@PutMapping("/admin/contacts/{id}/edit")
@@ -63,7 +61,6 @@ public class AdminController {
 		contactService.saveContact(contactForm);
 		redirectAttributes.addFlashAttribute("successMessage", "保存しました");
 		return "redirect:/admin/contacts";
-
 	}
 
 }
