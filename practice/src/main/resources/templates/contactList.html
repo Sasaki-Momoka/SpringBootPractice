@@ -10,8 +10,8 @@
 <body>
 
 	<form th:action="@{/admin/contacts}" th:object="${adminContactList}" method="post">
-		<table border="1">
 
+		<table border="1">
 			<tr>
 				<td>お問い合わせID</td>
 				<td>姓</td>
@@ -28,24 +28,17 @@
 				<td th:text="${list.contactType}"></td>
 				<td th:text="${#temporals.format(list.createdAt, 'yyyy/MM/dd HH:mm')}"></td>
 				<td th:text="${#temporals.format(list.updatedAt, 'yyyy/MM/dd HH:mm')}"></td>
-
 				<td>
 					<form th:action="@{/admin/contacts/{id}(id=${list.id})}" th:method="delete"
 						onsubmit="return confirm('本当に削除しますか？');">
 						<button type="submit" class="btn btn-danger">削除</button>
-
 					</form>
 				</td>
 			</tr>
-
-
-
-
-
 		</table>
+
 		<div th:if="${successMessage}">
 			<p th:text="${successMessage}"></p>
-
 			<div th:if="${errorMessage}">
 				<p th:text="${errorMessage}"></p>
 			</div>

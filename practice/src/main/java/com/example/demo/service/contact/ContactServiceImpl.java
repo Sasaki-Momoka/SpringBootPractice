@@ -37,12 +37,10 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Transactional
-
 	public Contact getEditById(Long id) {
 		Optional<Contact> edit = contactRepository.findById(id);
 		Contact entity = edit.get();
 		ContactForm form = new ContactForm();
-
 		form.setId(entity.getId());
 		form.setLastName(entity.getLastName());
 		form.setFirstName(entity.getFirstName());
@@ -53,8 +51,6 @@ public class ContactServiceImpl implements ContactService {
 		form.setBuildingName(entity.getBuildingName());
 		form.setContactType(entity.getContactType());
 		form.setBody(entity.getBody());
-
-		System.out.println("テスト動いてない");
 		return contactRepository.save(entity);
 
 	}
@@ -62,12 +58,7 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	@Transactional
 	public void saveContact(ContactForm contactForm) {
-		
 		Contact contact = contactRepository.findById(contactForm.getId()).orElseThrow();
-
-		System.out.println("serviceです");
-		System.out.println(contactForm.getId());
-
 		contact.setLastName(contactForm.getLastName());
 		contact.setFirstName(contactForm.getFirstName());
 		contact.setEmail(contactForm.getEmail());
@@ -77,14 +68,9 @@ public class ContactServiceImpl implements ContactService {
 		contact.setBuildingName(contactForm.getBuildingName());
 		contact.setContactType(contactForm.getContactType());
 		contact.setBody(contactForm.getBody());
-
 		contact.setCreatedAt(contactForm.getCreatedAt());
 		contact.setUpdatedAt(LocalDateTime.now());
-
-		System.out.println(contact.getId());
 		contactRepository.save(contact);
-		System.out.println("");
-
 	}
 
 }

@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.contact.Contact;
@@ -25,27 +26,20 @@ public class AdminController {
 
 	@GetMapping("/admin/contacts")
 	public String showList(Model model) {
-
 		List<Contact> list = contactService.getContactlist();
-
 		model.addAttribute("list", list);
-
 		return "contactList";
-
 	}
 
 	@GetMapping("/admin/contacts/{id}")
 	public String detailContact(@PathVariable("id") Long id, Model model) {
-
 		Contact detail = contactService.getDetailById(id).orElse(null);
-
 		model.addAttribute("detail", detail);
-
 		return "contactDetail";
 
 	}
 
-	@PostMapping("/admin/contacts/{id}")
+	@DeleteMapping("/admin/contacts/{id}")
 	public String delete(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		contactService.deleteById(id);
 		redirectAttributes.addFlashAttribute("successMessage", "削除しました");
@@ -59,20 +53,15 @@ public class AdminController {
 
 	}
 
-	@PostMapping("/admin/contacts/{id}/edit")
-	public String upDateEdit(@Validated @ModelAttribute("contactForm") ContactForm contactForm, @PathVariable Long id,
+	@PutMapping("/admin/contacts/{id}/edit")
+	public String updateEdit(@Validated @ModelAttribute("contactForm") ContactForm contactForm, @PathVariable Long id,
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-
 		if (bindingResult.hasErrors()) {
-
 			return "edit";
 		}
 		contactForm.setId(id);
-
 		contactService.saveContact(contactForm);
-
 		redirectAttributes.addFlashAttribute("successMessage", "保存しました");
-
 		return "redirect:/admin/contacts";
 
 	}

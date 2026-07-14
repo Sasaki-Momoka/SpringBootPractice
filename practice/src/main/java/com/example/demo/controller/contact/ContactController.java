@@ -24,7 +24,6 @@ public class ContactController {
 	@GetMapping("/contact")
 	public String contact(Model model) {
 		model.addAttribute("contactForm", new ContactForm());
-
 		return "contact";
 	}
 
@@ -38,14 +37,12 @@ public class ContactController {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("contactForm", contactForm);
-
 		return "redirect:/contact/confirm";
 	}
 
 	@GetMapping("/contact/confirm")
 	public String confirm(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-
 		ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
 		model.addAttribute("contactForm", contactForm);
 		return "confirmation";
@@ -55,9 +52,7 @@ public class ContactController {
 	public String register(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
-
 		contactService.saveContact(contactForm);
-
 		return "redirect:/contact/complete";
 
 	}
@@ -71,9 +66,7 @@ public class ContactController {
 		HttpSession session = request.getSession();
 		ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
 		model.addAttribute("contactForm", contactForm);
-
 		session.invalidate();
-
 		return "completion";
 	}
 }
