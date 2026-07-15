@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>サインアップ</title>
-<input type="hidden" name="id" th:field="*{id}">
+<!--<input type="hidden" name="id" th:field="*{id}">-->
 </head>
 <body>
 	<h2>新規ユーザー登録</h2>
-	<form th:action="@{/admin/signup}" th:object="{adminForm}" method="post">
+	<form th:action="@{/admin/signup}" th:object="${user}" method="post">
 	
 	  <div>
             <label>姓:</label>
             <input type="text" th:field="*{lastName}" />
-            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lasNname}" style="color:red;"></div>
+            <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color:red;"></div>
         </div>
 	
 	

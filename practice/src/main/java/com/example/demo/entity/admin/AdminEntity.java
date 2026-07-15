@@ -22,10 +22,10 @@ public class AdminEntity {
 	private Long id;
 	
 	@NotBlank(message = "姓を入力してください")
-	String last_name;
+	String lastName;
 	
 	@NotBlank(message = "名を入力してください")
-	String first_name;
+	String firstName;
 	
     @NotBlank(message = "メールアドレスを入力してください")
     @Email(message = "メールアドレスの形式が正しくありません")
