@@ -21,6 +21,7 @@ import com.example.demo.form.admin.AdminForm;
 import com.example.demo.form.contact.ContactForm;
 import com.example.demo.service.contact.ContactService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession; 
 
 @Controller
@@ -77,9 +78,10 @@ public class AdminController {
 		return "signup";
 }
 	@PostMapping("/admin/signup")
-	public String signup(@Validated @ModelAttribute("user")AdminEntity user, 
-			BindingResult bindingResult) {
+	public String signup(@Validated @ModelAttribute("user")AdminEntity user,BindingResult bindingResult ,HttpServletRequest request
+			) {
 		HttpSession session = request.getSession();
+		//session.setAttribute(request, session);
 		AdminForm adminForm = (AdminForm) session.getAttribute("adminForm");
 		
 		//adminService.save(adminForm);

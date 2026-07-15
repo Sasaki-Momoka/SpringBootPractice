@@ -2,6 +2,9 @@ package com.example.demo.form.admin;
 
 import java.io.Serializable;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -9,6 +12,9 @@ import lombok.Data;
 
 @Data
 public class AdminForm implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Long id;
 	

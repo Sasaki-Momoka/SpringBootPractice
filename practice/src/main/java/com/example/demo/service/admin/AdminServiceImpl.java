@@ -3,6 +3,7 @@ package com.example.demo.service.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.admin.AdminEntity;
 import com.example.demo.form.admin.AdminForm;
 import com.example.demo.repository.admin.AdminRepository;
 
@@ -25,9 +26,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public AdminForm save(AdminForm adminForm) {
+	public AdminEntity save(AdminForm adminForm) {
 		
-		AdminForm form = adminRepository.findById(adminForm.getId()).orElseThrow();
+		AdminEntity form = adminRepository.findById(adminForm.getId()).orElseThrow();
 		
 		//AdminForm form = new AdminForm();
 		//AdminForm entity = (AdminForm) edit.get();
