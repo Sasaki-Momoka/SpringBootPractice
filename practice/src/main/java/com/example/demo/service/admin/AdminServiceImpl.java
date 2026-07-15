@@ -15,6 +15,13 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
+	/*	@Override
+		public List<AdminForm> saveUser() {
+			List<AdminForm> form = adminRepository.findAll();
+			return form;
+		}
+	*/
+	
 	
 	@Transactional
 	public AdminForm saveUser(AdminForm adminForm) {

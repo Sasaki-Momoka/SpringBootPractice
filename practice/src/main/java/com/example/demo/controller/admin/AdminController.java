@@ -66,36 +66,6 @@ public class AdminController {
 	}
 	
 	
-/*		@RequestMapping (value = "/admin/signup",method = RequestMethod.POST)
-		public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
-			
-			if(result.hasErrors()) {
-				List<String> errorList = newArrayList<String>();
-				for(ObjectError error : result.getAllErrors()) {
-					errorList.add(error.getDefaultMessage());
-				}
-			model.addAttribute("validationError",errorList);
-			return "/admin/signup";
-		}*/
-/*		
-	@GetMapping("/admin/signup")
-	public String showSignupForm(@ModelAttribute("signupForm") SignupForm form) {
-		System.out.println("テストです。");
-		return "signup";
-}
-	@PostMapping("/admin/signup")
-	public String registerUser(@Validated @ModelAttribute("signupForm")SignupForm form, 
-			BindingResult bindingResult, Model model) {
-		if (bindingResult.hasErrors()) {
-			System.out.println("テストです。２");
-			return "/signup";
-		}
-		return "redirect:/admin/contacts";
-	}*/
-	
-	
-	
-	
 	@GetMapping("/admin/signup")
 	public String showSignupForm(Model model) {
 		System.out.println("テストです。");

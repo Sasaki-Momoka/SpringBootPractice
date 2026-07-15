@@ -5,22 +5,24 @@ import java.io.Serializable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 public class AdminForm implements Serializable{
 	
 	private Long id;
 	
-	@NotBlank //(message = "姓を入力してください")
+	@NotBlank (message = "姓を入力してください")
 	private String lastName;
-	@NotBlank //(message = "姓を入力してください")
+	@NotBlank (message = "姓を入力してください")
 	private String firstName;
 	
-	@NotBlank //(message = "メールアドレスを入力してください")
-	@Email //(message = "正しいメールアドレスを入力してください")
+	@NotBlank (message = "メールアドレスを入力してください")
+	@Email (message = "正しいメールアドレスを入力してください")
 	private String email;
 	
-	@NotBlank //(message = "パスワードを設定してください")
-	@Size //(message = "パスワードは8文字以上で入力してください")
+	@NotBlank (message = "パスワードを設定してください")
+	@Size (min = 8, message = "パスワードは8文字以上で入力してください")
 	private String password;
 	
     public String getLastName() {return lastName;}
@@ -33,6 +35,10 @@ public class AdminForm implements Serializable{
     public void setEmail(String email) { this.email = email; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    
+    public Long getId(Long id) {
+		return this.id = id;
+	}
     
     public Long setId(Long id) {
     	return this.id = id;

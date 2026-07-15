@@ -1,13 +1,11 @@
 package com.example.demo.entity.admin;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 
@@ -19,22 +17,45 @@ public class AdminEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
-	@NotBlank(message = "姓を入力してください")
-	String lastName;
+	@Column  (name = "last_name",nullable = false)
+	private String lastName;
 	
-	@NotBlank(message = "名を入力してください")
-	String firstName;
+	@Column  (name = "first_name",nullable = false)
+	private String firstName;
 	
-    @NotBlank(message = "メールアドレスを入力してください")
-    @Email(message = "メールアドレスの形式が正しくありません")
+    @Column  (name = "email",nullable = false)
     private String email;
     
-    @NotBlank(message = "パスワードを入力してください")
-    @Size(min = 8, message = "パスワードは8文字以上で入力してください")
+    @Column  (name = "password",nullable = false)
     private String password;
+
+
+	public boolean hasErrors() {
+		return false;
+	}
+
     
     
+	/*	@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long id;
+		
+		@NotBlank(message = "姓を入力してください")
+		String lastName;
+		
+		@NotBlank(message = "名を入力してください")
+		String firstName;
+		
+	@NotBlank(message = "メールアドレスを入力してください")
+	@Email(message = "メールアドレスの形式が正しくありません")
+	private String email;
+	
+	@NotBlank(message = "パスワードを入力してください")
+	@Size(min = 8, message = "パスワードは8文字以上で入力してください")
+	private String password;
+	*/
 	
 }
