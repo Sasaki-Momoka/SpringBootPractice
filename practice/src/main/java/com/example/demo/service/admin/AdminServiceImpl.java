@@ -1,6 +1,5 @@
 package com.example.demo.service.admin;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +17,21 @@ public class AdminServiceImpl implements AdminService {
 	
 	
 	@Transactional
-	public void saveUser(AdminForm adminForm) {
-		User entity = new User();
+	public AdminForm saveUser(AdminForm adminForm) {
 		
-		entity.setLastName(adminForm.getLastName());
+		AdminForm form = adminRepository.findById(adminForm.getId()).orElseThrow();
+		
+		//AdminForm form = new AdminForm();
+		//AdminForm entity = (AdminForm) edit.get();
+		
+		
+
+		form.setLastName(adminForm.getLastName());
+		form.setFirstName(adminForm.getFirstName());
+		form.setEmail(adminForm.getEmail());
+		form.setPassword(adminForm.getPassword());
+		
+		return  adminRepository.save(form);
 	}
 			
 	
