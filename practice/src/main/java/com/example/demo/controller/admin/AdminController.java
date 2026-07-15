@@ -17,12 +17,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.admin.AdminEntity;
 import com.example.demo.entity.contact.Contact;
+import com.example.demo.form.admin.AdminForm;
 import com.example.demo.form.contact.ContactForm;
-import com.example.demo.service.contact.ContactService; 
+import com.example.demo.service.contact.ContactService;
+
+import jakarta.servlet.http.HttpSession; 
 
 @Controller
 public class AdminController {
 
+	private static final String request = null;
 	@Autowired
 	private ContactService contactService;
 
@@ -75,9 +79,13 @@ public class AdminController {
 	@PostMapping("/admin/signup")
 	public String signup(@Validated @ModelAttribute("user")AdminEntity user, 
 			BindingResult bindingResult) {
+		HttpSession session = request.();
+		AdminForm adminForm = (AdminForm) session.getAttribute("adminForm");
+		adminService.saveUser(adminForm);
+		
 		if (bindingResult.hasErrors()) {
 			System.out.println("テストです。２");
-			return "/signup";
+			return "/admin/signup";
 		}
 		return "redirect:/admin/contacts";
 	}

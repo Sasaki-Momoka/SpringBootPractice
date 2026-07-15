@@ -14,6 +14,7 @@ public class AdminForm implements Serializable{
 	
 	@NotBlank (message = "姓を入力してください")
 	private String lastName;
+	
 	@NotBlank (message = "姓を入力してください")
 	private String firstName;
 	

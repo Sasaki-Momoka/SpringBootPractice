@@ -1,12 +1,16 @@
 package com.example.demo.service.admin;
 
-import java.util.List;
-
 import com.example.demo.form.admin.AdminForm;
 
 public class AdminService {
 	
-	public List<AdminForm> getId();
+	
+	void save(AdminForm adminForm) {
+	}
+	/*	public List<AdminForm> getAdminList(){
+			
+		}*/
+	
 	
 	/*	public AdminForm saveUser(Long id) {
 	 * 
