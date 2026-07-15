@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
-	private AdminRepository adminRepository;
+	private AdminRepository adminRepository; 
 	
 	/*	@Override
 		public List<AdminForm> saveUser() {
@@ -25,7 +25,7 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public AdminForm saveUser(AdminForm adminForm) {
+	public AdminForm save(AdminForm adminForm) {
 		
 		AdminForm form = adminRepository.findById(adminForm.getId()).orElseThrow();
 		
@@ -39,6 +39,14 @@ public class AdminServiceImpl implements AdminService {
 		
 		return  adminRepository.save(form);
 	}
+
+	@Override
+	public AdminForm saveUser(AdminForm adminForm) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	
 			
 	
 	

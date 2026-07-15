@@ -71,7 +71,7 @@ public class AdminController {
 	
 	
 	@GetMapping("/admin/signup")
-	public String showSignupForm(Model model) {
+	public String showSignupForm(HttpSession session,Model model) {
 		System.out.println("テストです。");
 		model.addAttribute("user", new AdminEntity());
 		return "signup";
@@ -79,14 +79,15 @@ public class AdminController {
 	@PostMapping("/admin/signup")
 	public String signup(@Validated @ModelAttribute("user")AdminEntity user, 
 			BindingResult bindingResult) {
-		HttpSession session = request.();
+		HttpSession session = request.getSession();
 		AdminForm adminForm = (AdminForm) session.getAttribute("adminForm");
-		adminService.saveUser(adminForm);
 		
+		//adminService.save(adminForm);
 		if (bindingResult.hasErrors()) {
 			System.out.println("テストです。２");
 			return "/admin/signup";
 		}
+		
 		return "redirect:/admin/contacts";
 	}
 	
