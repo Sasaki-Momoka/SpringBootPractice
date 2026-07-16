@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.contact.Contact;
+import com.example.demo.form.admin.AdminForm;
 import com.example.demo.form.contact.ContactForm;
 import com.example.demo.repository.contact.ContactRepository;
 
@@ -71,6 +72,12 @@ public class ContactServiceImpl implements ContactService {
 		contact.setCreatedAt(contactForm.getCreatedAt());
 		contact.setUpdatedAt(LocalDateTime.now());
 		contactRepository.save(contact);
+	}
+
+	@Override
+	public void saveContact(AdminForm adminForm) {
+		// TODO 自動生成されたメソッド・スタブ
+		
 	}
 
 }

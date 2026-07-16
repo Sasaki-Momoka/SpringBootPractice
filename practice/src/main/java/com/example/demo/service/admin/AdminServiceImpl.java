@@ -3,7 +3,6 @@ package com.example.demo.service.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.admin.AdminEntity;
 import com.example.demo.form.admin.AdminForm;
 import com.example.demo.repository.admin.AdminRepository;
 
@@ -26,19 +25,21 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Override
 	@Transactional
-	public AdminEntity save(AdminForm adminForm) {
+	public AdminService saveAdmin(AdminForm adminForm) {
 		
-		AdminEntity form = adminRepository.findById(adminForm.getId()).orElseThrow();
+		//DBにデータがあって引っ張ってくる時だからいらない？
+		// AdminEntity form = adminRepository.findById(adminForm.getId()).orElseThrow();
 		
-		//AdminForm form = new AdminForm();
+		AdminForm admins = new AdminForm();
 		//AdminForm entity = (AdminForm) edit.get();
 
-		form.setLastName(adminForm.getLastName());
-		form.setFirstName(adminForm.getFirstName());
-		form.setEmail(adminForm.getEmail());
-		form.setPassword(adminForm.getPassword());
+		admins.setLastName(adminForm.getLastName());
+		admins.setFirstName(adminForm.getFirstName());
+		admins.setEmail(adminForm.getEmail());
+		admins.setPassword(adminForm.getPassword());
 		
-		return  adminRepository.save(form);
+		//　　formで入力されやデータをadminRepositoryが持っている　　メソッドに渡してDBに保存
+		return  adminRepository.save(admins);
 	}
 
 	@Override
