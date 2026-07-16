@@ -15,24 +15,25 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminRepository adminRepository; 
 	
-	/*	@Override
-		public List<AdminForm> saveUser() {
-			List<AdminForm> form = adminRepository.findAll();
-			return form;
-		}
-	*/
-	
-	
 	@Override
 	@Transactional
+	
+	//  画面から送られてきたAdminFormを受け取る　処理が終わった後にAdminServiceに返す
+	//  saveAdminは処理の名前
+	// 管理者情報を保存して、その結果を返す処理
 	public AdminService saveAdmin(AdminForm adminForm) {
 		
 		//DBにデータがあって引っ張ってくる時だからいらない？
 		// AdminEntity form = adminRepository.findById(adminForm.getId()).orElseThrow();
 		
+		//  新しいオブジェクトを作成
+		//  AdminFormクラスからadminsという名前のオブジェクトを作る
+		//  メモリ上に新しいAdminFormが準備される
 		AdminForm admins = new AdminForm();
 		//AdminForm entity = (AdminForm) edit.get();
-
+		
+		//  adminFormから取得した各々のデータを管理者オブジェクト(admins)にコピー
+		// admins.save()を使用する
 		admins.setLastName(adminForm.getLastName());
 		admins.setFirstName(adminForm.getFirstName());
 		admins.setEmail(adminForm.getEmail());
@@ -46,6 +47,12 @@ public class AdminServiceImpl implements AdminService {
 	public AdminForm saveUser(AdminForm adminForm) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
+	}
+
+	@Override
+	public void save(AdminForm adminForm) {
+		// TODO 自動生成されたメソッド・スタブ
+		
 	}
 
 	

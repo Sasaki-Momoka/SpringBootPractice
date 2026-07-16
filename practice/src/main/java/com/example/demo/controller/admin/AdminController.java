@@ -91,9 +91,10 @@ public class AdminController {
 		
 		//  管理画面用のデータをadminFormから取り出す処理
 		AdminForm adminForm = (AdminForm) session.getAttribute("adminForm");
-		
+		System.out.println("テストです。３");
 		// adminFormで入力されたデータをcontactServiceが持っているsaveContactメソッドに渡してデータベースへ保存 → adminServiceへ繋げるように変えなければでは？
-		adminService.saveAdmin(adminForm);
+		AdminEntity.saveAdmin(adminForm);
+		System.out.println("テストです。４");
 		//adminService.saveUser(adminForm);
 		//adminService.save(adminForm);
 		
@@ -101,7 +102,7 @@ public class AdminController {
 		//  BindingResult → Springbootに入っているBindingResult型の変数
 		//  bindingResultが持っている(.)hasErrorsメソッド(こちらもSpringbootで提供されている 戻り値がtrueかfalse
 		if (bindingResult.hasErrors()) {
-			System.out.println("テストです。３");
+			System.out.println("テストです。５");
 			return "/admin/signup";
 		}
 		

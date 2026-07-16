@@ -1,5 +1,7 @@
 package com.example.demo.entity.admin;
 
+import com.example.demo.form.admin.AdminForm;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,26 +38,36 @@ public class AdminEntity {
 	public boolean hasErrors() {
 		return false;
 	}
+	
+    public String getLastName() {return lastName;}
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    
+    public String getFirstName() {return firstName;}
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+	
+	public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    
+    public Long getId(Long id) {
+		return this.id = id;
+	}
+    
+    public Long setId(Long id) {
+    	return this.id = id;
+    }
+    public boolean hasrrors() {
+    	return false;
+    }
+
+	public static void saveAdmin(AdminForm adminForm) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 
     
     
-	/*	@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long id;
-		
-		@NotBlank(message = "姓を入力してください")
-		String lastName;
-		
-		@NotBlank(message = "名を入力してください")
-		String firstName;
-		
-	@NotBlank(message = "メールアドレスを入力してください")
-	@Email(message = "メールアドレスの形式が正しくありません")
-	private String email;
-	
-	@NotBlank(message = "パスワードを入力してください")
-	@Size(min = 8, message = "パスワードは8文字以上で入力してください")
-	private String password;
-	*/
+
 	
 }
