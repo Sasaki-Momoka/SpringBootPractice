@@ -3,6 +3,9 @@ package com.example.demo.form.contact;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,20 +16,24 @@ import lombok.Data;
 @Data
 public class ContactForm implements Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	
 	private Long id;
 
-	@NotBlank
+	@NotBlank (message = "姓を入力してください")
 	private String lastName;
 
-	@NotBlank
+	@NotBlank (message = "名を入力してください")
 	private String firstName;
 
-	@NotBlank
-	@Email
+	@NotBlank (message = "メールアドレスを入力してください")
+	@Email (message = "メールアドレスの形式が正しくありません")
 	private String email;
 
-	@NotBlank
-	@Size(min = 10, max = 11)
+	@NotBlank (message = "パスワードを入力してください")
+	@Size(min = 10, max = 11 ) 
 	private String phone;
 
 	@NotBlank

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.entity.contact.Contact;
+import com.example.demo.form.admin.AdminForm;
 import com.example.demo.form.contact.ContactForm;
 
 public interface ContactService {
@@ -17,5 +18,7 @@ public interface ContactService {
 	public void deleteById(Long id);
 
 	Contact getEditById(Long id);
+
+	void saveContact(AdminForm adminForm);
 
 }
