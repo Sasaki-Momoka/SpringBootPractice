@@ -21,11 +21,14 @@ public class SigninUserDetailsServiceImpl implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		
+		System.out.println("テスト１");
 		//  AdminRepositoryからメールアドレスが一致する情報をデータベースから取得
 		AdminEntity admin = adminRepository.findByEmail(username);
+		System.out.println("テスト２");
+		System.out.println(adminRepository.getClass());
 		//  もし見つからなかった場合にユーザーが存在しませんという例外を発生する
 				if (admin == null) {
+					System.out.println("テスト３");
 					throw new UsernameNotFoundException("ユーザーが存在しません");
 				}
 		//  見つかった情報をUserDetailへ返す
