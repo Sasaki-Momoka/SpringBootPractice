@@ -1,6 +1,5 @@
 package com.example.demo.common;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,25 +12,19 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	
-	@Autowired
-	private UserDetailsService userDetailsService;
-	
-		@Bean
-		public PasswordEncoder passwordEncoder() {
-			return new BCryptPasswordEncoder();
+	/*	@Bean
+				public PasswordEncoder passwordEncoder() {
+					return new BCryptPasswordEncoder();
+		}
+	*/
+	private final UserDetailsService userDetailsService;
+	private final PasswordEncoder passwordEncoder;
 
-/*	private final UserDetailsService userDetailsService;
-	private final PasswordEncoder passwordEncoder;*/
-	
-	/*	@Autowired
-		public SecurityConfig(UserDetailsService userDetailsService,PasswordEncoder passwordEncoder) {
-			this.userDetailsService = userDetailsService;
-			this.passwordEncoder = passwordEncoder;
-		}*/
-	
-	
-	
+
+	public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+		this.userDetailsService = userDetailsService;
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -53,8 +46,6 @@ public class SecurityConfig {
 						.permitAll()
 						.requestMatchers("/admin/contacts", "/admin/contacts/{id}", "/admin/contacts/{id}/edit")
 						.hasRole("ADMIN"));
-		
-	
 
 		return http.build();
 
