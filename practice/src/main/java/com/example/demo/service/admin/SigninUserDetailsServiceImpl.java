@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.admin.UserDetail;
+
 @Service
 public class SigninUserDetailsServiceImpl implements UserDetailsService{
 	
@@ -14,7 +16,7 @@ public class SigninUserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
 		
 		if (username.equals("jhon")) {
-			return new SigninUser("jhon","pass",Collections.emptyList());
+			return new UserDetail("jhon","pass",Collections.emptyList());
 		} else {
 			throw new UsernameNotFoundException(username + " => 指定しているユーザー名は存在しません");
 		}
