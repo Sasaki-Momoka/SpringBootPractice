@@ -8,7 +8,7 @@
 
 <body>
 	<h2>ログイン画面</h2>
-	<form th:action="@{/admin/signin}" th:object="${}" method="post">
+	<form th:action="@{/admin/signin}" th:object="${adminSigninForm}" method="post">
 		<div>
 			<label>メールアドレス:</label>
 			<input type="text" th:field="*{email}" />

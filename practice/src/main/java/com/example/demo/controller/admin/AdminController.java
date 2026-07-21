@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.contact.Contact;
 import com.example.demo.form.admin.AdminForm;
+import com.example.demo.form.admin.AdminSigninForm;
 import com.example.demo.form.contact.ContactForm;
 import com.example.demo.service.admin.AdminService;
 import com.example.demo.service.contact.ContactService;
@@ -96,8 +97,11 @@ public class AdminController {
 		return "redirect:/admin/contacts";
 	}
 
+	
+	//  サインインフォーム
 	@GetMapping("admin/signin")
-	public String login() {
+	public String signin(Model model) {
+		model.addAttribute ("adminSigninForm" , new AdminSigninForm());
 		return "signin";
 	}
 
