@@ -13,18 +13,22 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-	/*	@Bean
-		PasswordEncoder passwordEncoder() {
-			return new BCryptPasswordEncoder();*/
-
-	private final UserDetailsService userDetailsService;
-	private final PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	public SecurityConfig(UserDetailsService userDetailsService,PasswordEncoder passwordEncoder) {
-		this.userDetailsService = userDetailsService;
-		this.passwordEncoder = passwordEncoder;
-	}
+	private UserDetailsService userDetailsService;
+	
+		@Bean
+		public PasswordEncoder passwordEncoder() {
+			return new BCryptPasswordEncoder();
+
+/*	private final UserDetailsService userDetailsService;
+	private final PasswordEncoder passwordEncoder;*/
+	
+	/*	@Autowired
+		public SecurityConfig(UserDetailsService userDetailsService,PasswordEncoder passwordEncoder) {
+			this.userDetailsService = userDetailsService;
+			this.passwordEncoder = passwordEncoder;
+		}*/
 	
 	
 	
