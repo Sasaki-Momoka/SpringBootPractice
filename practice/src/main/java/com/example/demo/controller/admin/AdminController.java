@@ -97,20 +97,17 @@ public class AdminController {
 		return "redirect:/admin/contacts";
 	}
 
-	
 	//  サインインフォーム
 	@GetMapping("admin/signin")
 	public String signin(Model model) {
-		model.addAttribute ("adminSigninForm" , new AdminSigninForm());
-		
+		model.addAttribute("adminSigninForm", new AdminSigninForm());
+
 		return "signin";
 	}
-	
-	
+
 	@PostMapping("/admin/contacts/logout")
 	public String logout() {
-	    // .. perform logout
-	    return "redirect:/admin/signin";
+		return "redirect:/admin/signin";
 	}
 
 }

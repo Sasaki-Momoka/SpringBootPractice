@@ -18,35 +18,30 @@ public class SecurityConfig {
 	public SecurityConfig(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 		this.userDetailsService = userDetailsService;
 		this.passwordEncoder = passwordEncoder;
-
 	}
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http
-		
-		
+
 				.authorizeHttpRequests(authz -> authz
 						.requestMatchers("/admin/signup", "/admin/signin", "/contact/**")
 						.permitAll()
 						.requestMatchers("/admin/contacts", "/admin/contacts/{id}", "/admin/contacts/{id}/edit")
 						.authenticated())
-						//.hasRole("ADMIN"))
-
 
 				.formLogin(login -> login
 						.loginPage("/admin/signin")
 						.loginProcessingUrl("/admin/signin")
 						.defaultSuccessUrl("/admin/contacts")
-						.usernameParameter("email") 
+						.usernameParameter("email")
 						.permitAll())
 
 				.logout(logout -> logout
 						.logoutSuccessUrl("/admin/signin?logout")
 						.permitAll());
 
-			
 		return http.build();
 
 	}

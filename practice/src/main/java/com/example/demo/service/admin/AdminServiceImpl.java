@@ -10,27 +10,26 @@ import com.example.demo.repository.admin.AdminRepository;
 
 import jakarta.transaction.Transactional;
 
-
 @Service
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Autowired
-	private AdminRepository adminRepository; 
+	private AdminRepository adminRepository;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	
+
 	//  画面から送られてきたAdminFormを受け取る　処理が終わった後にAdminServiceに返す
 	//  saveAdminは処理の名前
 	// 管理者情報を保存して、その結果を返す処理
 	@Override
 	@Transactional
 	public void saveAdmin(AdminForm adminForm) {
-		
+
 		//  新しいオブジェクトを作成
 		//  AdminFormクラスからadminsという名前のオブジェクトを作る
 		//  メモリ上に新しいAdminFormが準備される
 		AdminEntity admin = new AdminEntity();
-		
+
 		//  adminFormから取得した各々のデータを管理者オブジェクト(admins)にコピー
 		// admins.save()を使用する
 		admin.setLastName(adminForm.getLastName());
@@ -38,6 +37,6 @@ public class AdminServiceImpl implements AdminService {
 		admin.setEmail(adminForm.getEmail());
 		admin.setPassword(passwordEncoder.encode(adminForm.getPassword()));
 		//　　formで入力されやデータをadminRepositoryが持っている　　メソッドに渡してDBに保存
-		 adminRepository.save(admin);
+		adminRepository.save(admin);
 	}
 }
