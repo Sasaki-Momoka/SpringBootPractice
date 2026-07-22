@@ -8,6 +8,14 @@
 
 <body>
 	<h2>ログイン画面</h2>
+<!--	 エラー時にURLに ?error が付与されたことを検知する 
+<div th:if="${param.error}">
+  <div style="color: red;">
+     Spring Securityのエラーセッションからメッセージを取得 
+    <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION?.message ?: 'ログインに失敗しました'}"></span>
+  </div>-->
+</div>
+
 	<form th:action="@{/admin/signin}" th:object="${adminSigninForm}" method="post">
 		
     <text align="center">

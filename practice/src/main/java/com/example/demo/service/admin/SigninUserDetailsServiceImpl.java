@@ -24,11 +24,9 @@ public class SigninUserDetailsServiceImpl implements UserDetailsService{
 
 		//  AdminRepositoryからメールアドレスが一致する情報をデータベースから取得
 		AdminEntity admin = adminRepository.findByEmail(email);
-		System.out.println("テスト２");
 	
 		//  もし見つからなかった場合にユーザーが存在しませんという例外を発生する
 				if (admin == null) {
-					System.out.println("テスト３");
 					throw new UsernameNotFoundException(email + "ユーザーが存在しません");
 				}
 		//  見つかった情報をUserDetailへ返す
