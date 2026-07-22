@@ -20,23 +20,28 @@ public class SigninUserDetailsServiceImpl implements UserDetailsService{
 	private AdminRepository adminRepository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-		System.out.println("テスト１");
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+
 		//  AdminRepositoryからメールアドレスが一致する情報をデータベースから取得
-		AdminEntity admin = adminRepository.findByEmail(username);
+		AdminEntity admin = adminRepository.findByEmail(email);
 		System.out.println("テスト２");
-		System.out.println(adminRepository.getClass());
+	
 		//  もし見つからなかった場合にユーザーが存在しませんという例外を発生する
 				if (admin == null) {
 					System.out.println("テスト３");
-					throw new UsernameNotFoundException("ユーザーが存在しません");
+					throw new UsernameNotFoundException(email + "ユーザーが存在しません");
 				}
 		//  見つかった情報をUserDetailへ返す
 		return new UserDetail(
-				admin.getEmail(),
-				admin.getPassword(),
-				Collections.emptyList()
-				);
+					admin.getEmail(),
+					admin.getPassword(),
+					Collections.emptyList()
+					);
+				
+		/*				 return org.springframework.security.core.userdetails.User.withUsername(user.getEmail())
+						            .password(user.getPassword())
+						            .roles("USER") // 適切なロールを設定
+						            .build();*/
 		
 	}
 	

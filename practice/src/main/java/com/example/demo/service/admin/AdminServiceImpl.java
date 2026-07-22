@@ -1,6 +1,7 @@
 package com.example.demo.service.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.admin.AdminEntity;
@@ -15,6 +16,8 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private AdminRepository adminRepository; 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	//  画面から送られてきたAdminFormを受け取る　処理が終わった後にAdminServiceに返す
 	//  saveAdminは処理の名前
@@ -33,7 +36,7 @@ public class AdminServiceImpl implements AdminService {
 		admin.setLastName(adminForm.getLastName());
 		admin.setFirstName(adminForm.getFirstName());
 		admin.setEmail(adminForm.getEmail());
-		admin.setPassword(adminForm.getPassword());
+		admin.setPassword(passwordEncoder.encode(adminForm.getPassword()));
 		//　　formで入力されやデータをadminRepositoryが持っている　　メソッドに渡してDBに保存
 		 adminRepository.save(admin);
 	}

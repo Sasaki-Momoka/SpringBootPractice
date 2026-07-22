@@ -13,7 +13,7 @@
     <text align="center">
 		<div>
 			<label>メールアドレス:</label>
-			<input type="text" th:field="*{email}" />
+			<input type="text" th:field="*{email}" name="email"/>
 			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></div>
 		</div>
 		<div>
