@@ -30,7 +30,7 @@ public class ContactController {
 	@PostMapping("/contact")
 	public String contact(@Validated @ModelAttribute("contactForm") ContactForm contactForm, BindingResult errorResult,
 			HttpServletRequest request) {
-		
+
 		if (errorResult.hasErrors()) {
 			return "contact";
 		}
@@ -59,7 +59,7 @@ public class ContactController {
 
 	@GetMapping("/contact/complete")
 	public String complete(Model model, HttpServletRequest request) {
-		
+
 		if (request.getSession(false) == null) {
 			return "redirect:/contact";
 		}

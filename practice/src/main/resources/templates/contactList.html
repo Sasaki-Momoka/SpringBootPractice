@@ -20,7 +20,7 @@
 				<td>作成日時</td>
 				<td>更新日時</td>
 			</tr>
-
+			
 			<tr th:each="list : ${list}">
 				<td><a th:href="@{/admin/contacts/{id}(id=${list.id})}" th:text="${list.id}"></a></td>
 				<td th:text="${list.lastName}"></td>
@@ -43,7 +43,6 @@
 				<p th:text="${errorMessage}"></p>
 			</div>
 	</form>
-
 	<form th:action="@{/admin/contacts/logout}" method="post">
 		<button type="submit">ログアウト</button>
 	</form>
